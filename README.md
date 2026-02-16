@@ -1,14 +1,12 @@
-# Sanad.cl | Sistema de Gestión de Videoconsultas 🧠
+# Sanad.cl | Sistema de Gestión de Teleconsultas 🧠
 
-Módulo de gestión y analítica desarrollado para **sanad.cl**. Este sistema permite centralizar la cartilla de especialistas médicos, validar el acceso de pacientes mediante cuotas de atención y proporcionar una capa de analítica avanzada para el **Policlínico Tabancura**.
-
-
+Módulo de gestión y analítica desarrollado para **sanad.cl**. Este sistema permite centralizar la cartilla de especialistas médicos, validar el acceso de pacientes mediante cuotas de atención y proporcionar una capa de analítica avanzada para el **Sanad SPA**.
 
 ## 🏗️ Arquitectura del Proyecto
 
 El ecosistema está construido bajo un enfoque de microservicios integrados en una arquitectura de datos centralizada:
 
-- **Frontend de Pacientes (`instituciones.py`):** Interfaz de cara al usuario para validación de RUT y búsqueda de médicos.
+- **Frontend de Pacientes (`instituciones.py`):** Interfaz de cara al usuario para validación de RUT y búsqueda de psicólogos.
 - **Panel Administrativo (`dashboard.py`):** BackOffice para gestión de datos, métricas de conversión y administración de especialistas.
 - **Capa de Datos:** PostgreSQL alojado en infraestructura propia.
 - **Despliegue:** Contenedores Docker gestionados a través de **Coolify**.
@@ -23,13 +21,14 @@ Se ha implementado una lógica de control de acceso basada en la saturación del
     - **Amarillo (3 atenciones):** Advertencia de último cupo disponible.
     - **Rojo (4 atenciones):** Límite alcanzado. Se bloquea el buscador y se fuerza el cierre de sesión tras la última agenda.
 - **Redirección Segura:** Al confirmar una agenda, se registra el log de atención y se redirige automáticamente a la plataforma **Sacmed**.
+
 ## 🛠️ Stack Tecnológico
 
 - **Lenguaje:** Python 3.9+.
 - **Framework UI:** Streamlit (Estética minimalista y profesional).
 - **Base de Datos:** PostgreSQL con `psycopg2`.
 - **Analítica:** Pandas y Plotly Express.
-- **Reportabilidad:** XlsxWriter para generación de reportes Excel.
+- **Reportabilidad:** XlsxWriter para generación de reportes Excel y CSV.
 
 ## 🖥️ Módulos del Dashboard Administrativo
 
@@ -49,4 +48,4 @@ El Panel de Control está diseñado para la toma de decisiones basada en datos:
 3. Ejecutar aplicación: `streamlit run app.py`.
 
 ---
-© 2026 sanad.cl | Ingeniería de Software para la Salud Digital
+© 2026 sanad.cl | Software para la Salud Digital del Futuro.
