@@ -1,11 +1,12 @@
 # --- SANAD.CL PRODUCTIVO ---
 # Archivos específicos que deseas ignorar
-act-especiliastas.py
+act-especialistas.py
 act.py
 especialista.py
 main.py
 main2.py
 main3.py
+mapeo.csv
 
 # --- STREAMLIT & SECRETS ---
 .streamlit/
