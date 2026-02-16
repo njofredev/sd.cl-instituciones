@@ -1,6 +1,6 @@
 # Sanad.cl | Sistema de Gestión de Teleconsultas 🧠
 
-Módulo de gestión y analítica desarrollado para **sanad.cl**. Este sistema permite centralizar la cartilla de especialistas médicos, validar el acceso de pacientes mediante cuotas de atención y proporcionar una capa de analítica avanzada para el **Sanad SPA**.
+Módulo de gestión y analítica desarrollado para **sanad.cl**. Este sistema permite centralizar la cartilla de especialistas médicos, validar el acceso de pacientes mediante cuotas de atención y proporcionar una capa de analítica avanzada para **Sanad SPA**.
 
 ## 🏗️ Arquitectura del Proyecto
 
