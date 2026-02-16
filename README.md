@@ -8,7 +8,7 @@ Módulo de gestión y analítica desarrollado para **sanad.cl**. Este sistema pe
 
 El ecosistema está construido bajo un enfoque de microservicios integrados en una arquitectura de datos centralizada:
 
-- **Frontend de Pacientes (`app.py`):** Interfaz de cara al usuario para validación de RUT y búsqueda de médicos.
+- **Frontend de Pacientes (`instituciones.py`):** Interfaz de cara al usuario para validación de RUT y búsqueda de médicos.
 - **Panel Administrativo (`dashboard.py`):** BackOffice para gestión de datos, métricas de conversión y administración de especialistas.
 - **Capa de Datos:** PostgreSQL alojado en infraestructura propia.
 - **Despliegue:** Contenedores Docker gestionados a través de **Coolify**.
