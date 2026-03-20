@@ -1,51 +1,41 @@
-# Sanad.cl | Sistema de Gestión de Teleconsultas 🧠
+# Sanad Dashboard - Frontend
 
-Módulo de gestión y analítica desarrollado para **sanad.cl**. Este sistema permite centralizar la cartilla de especialistas médicos, validar el acceso de pacientes mediante cuotas de atención y proporcionar una capa de analítica avanzada para **Sanad SPA**.
+Plataforma institucional para pacientes y administrativos de SANAD.  
+Construido con **React**, **Vite**, y **Tailwind CSS**.
 
-## 🏗️ Arquitectura del Proyecto
+## Configuración y Variables de Entorno
+Este proyecto requiere variables de entorno explícitas al momento de compilarse, tanto en desarrollo como en producción en la plataforma de Coolify.
+Crea un archivo `.env` o agrégalo en la configuración de la UI de Coolify:
 
-El ecosistema está construido bajo un enfoque de microservicios integrados en una arquitectura de datos centralizada:
+```env
+# La URL donde se encuentre desplegado tu servicio backend
+# Ej. https://api.sanad.cl (Sin / al final)
+VITE_API_URL=http://localhost:8000
 
-- **Frontend de Pacientes (`instituciones.py`):** Interfaz de cara al usuario para validación de RUT y búsqueda de psicólogos.
-- **Panel Administrativo (`dashboard.py`):** BackOffice para gestión de datos, métricas de conversión y administración de especialistas.
-- **Capa de Datos:** PostgreSQL alojado en infraestructura propia.
-- **Despliegue:** Contenedores Docker gestionados a través de **Coolify**.
+# La misma API_KEY que configuraste en tu `.env` del backend (SANAD_API_KEY)
+VITE_API_KEY=SND-tu-api-key-secreta
+```
 
-## 📋 Lógica de Negocio: Gestión de Cupos
+## Despliegue en Coolify (Guía Rápida)
+1. Importa este repositorio desde tu GitHub en tu panel principal de Coolify.
+2. Como Framework, elige el autodetectado **Node.js** (Nixpacks) o **Static Site**.
+3. Asegúrate de configurar explícitamente en el menú Build que el **Build Command** es `npm run build` y el **Publish Directory** es el directorio interno llamado `dist/`.
+4. Define las **Variables de Entorno** (`VITE_API_URL` y `VITE_API_KEY`) **antes** del primer despliegue, ya que Vite las inyecta silenciosamente en el código durante la compilación.
+5. Inicia el despliegue.
 
-Se ha implementado una lógica de control de acceso basada en la saturación del servicio, garantizando una experiencia de usuario fluida y transparente:
-
-- **Validación Automática:** Sanitización de RUT (eliminación de puntos y guiones) antes de la consulta a DB.
-- **Estados Dinámicos de Usuario:**
-    - **Verde (0-2 atenciones):** Acceso libre.
-    - **Amarillo (3 atenciones):** Advertencia de último cupo disponible.
-    - **Rojo (4 atenciones):** Límite alcanzado. Se bloquea el buscador y se fuerza el cierre de sesión tras la última agenda.
-- **Redirección Segura:** Al confirmar una agenda, se registra el log de atención y se redirige automáticamente a la plataforma **Sacmed**.
-
-## 🛠️ Stack Tecnológico
-
-- **Lenguaje:** Python 3.9+.
-- **Framework UI:** Streamlit (Estética minimalista y profesional).
-- **Base de Datos:** PostgreSQL con `psycopg2`.
-- **Analítica:** Pandas y Plotly Express.
-- **Reportabilidad:** XlsxWriter para generación de reportes Excel y CSV.
-
-## 🖥️ Módulos del Dashboard Administrativo
-
-El Panel de Control está diseñado para la toma de decisiones basada en datos:
-
-1. **Análisis Global:** Métricas de conversión, pacientes totales y uso promedio.
-2. **Visualización de Datos:** Gráficos de distribución por sede y motivos de consulta más frecuentes.
-3. **Historial de Atenciones:** Tabla detallada con fechas, pacientes y especialistas consultados.
-4. **Gestión de Usuarios:** Posibilidad de resetear o ajustar manualmente los contadores de reserva.
-5. **Control de Especialistas:** Interruptor maestro para activar o desactivar médicos de la cartilla pública.
-6. **Centro de Descargas:** Exportación masiva de datos en formato Excel y CSV.
-
-## 🚀 Instalación y Despliegue Local
-
-1. Clonar el repositorio.
-2. Instalar dependencias: `pip install -r requirements.txt`.
-3. Ejecutar aplicación: `streamlit run app.py`.
-
----
-© 2026 sanad.cl | Software para la Salud Digital del Futuro.
+## Entorno Local de Desarrollo
+1. Descarga el repositorio y abre la terminal en su directorio:
+2. Instala las dependencias de los módulos de Node:
+   ```bash
+   npm install
+   ```
+3. Genera el entorno de variables local con `.env`.
+4. Ejecuta el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
+5. Para probar el build comprimido localmente como lo haría Coolify:
+   ```bash
+   npm run build
+   npm run preview
+   ```
